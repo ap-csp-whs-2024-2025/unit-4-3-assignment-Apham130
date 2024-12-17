@@ -7,7 +7,8 @@
 int main()
 {
   std::srand(std::time(0));  // seeding our random number generator
-
+  double num1;
+  double num2;
 
   std::cout << "Welcome to C++ Calculator!  Choose an option below!\n";
 
@@ -24,24 +25,82 @@ int main()
               << "99. Quit\n\n> ";
     std::cin >> user_input;
 
-    if (user_input == 0) //Roll random numberr
+    if (user_input == 0) //Roll random number
     {
-      int bounds;
-      std::cout << "Pick the bounds (any n# >1)"
-      int random_number = (std::rand() % 6) + 1;  // random numbers between 1 and 6
+      int bound;
+      std::cout << "\nPick the bound (any integer >1)\n> ";
+      std::cin >> bound;
+      int random_number = (std::rand() % bound) + 1;  // random numbers between 1 and 6
       std::cout << "\nYou rolled a " << random_number << "!\n";
     }
     else
     {
-      if (user_input == 1)
+      if (user_input == 1) //Addition
       {
-        int num1;
-        int num2;
-        std::cout << "Enter two numbers\n";
-        std::cin >> num1 >> num2;
-        std::cout << "\nTheir sum is " << (num1 + num2) << "!\n";
+        std::cout << "\nEnter two numbers\n> ";
+        std::cin >> num1;
+        std::cout << "> ";
+        std::cin >> num2;
+        std::cout << "\nThe sum is " << (num1 + num2) << "!\n";
+      }
+      else
+      {
+        if (user_input == 2)   //Subtraction
+        {
+          std::cout << "\nEnter Minuend\n> ";
+          std::cin >> num1;
+          std::cout << "Enter Subtrahend\n>";
+          std::cin >> num2;
+          std::cout << "\nThe difference is " << (num1 - num2) << "!\n";
+        }
+        else
+        {
+          if (user_input == 3) //Multiplication
+          {
+            std::cout << "\nEnter two numbers\n> ";
+            std::cin >> num1;
+            std::cout << "> ";
+            std::cin >> num2;
+            std::cout << "\nThe product is " << (num1 * num2) << "!\n";
+          }
+          else
+          {
+            if (user_input == 4)  //Division
+            {
+              std::cout << "\nEnter Dividend\n> ";
+              std::cin >> num1;
+              std::cout << "Enter Divisor\n> ";
+              std::cin >> num2;
+              if (num2 != 0)
+              {
+                std::cout << "\nThe quotient is " << (num1 / num2) << "!\n";
+              }
+              else
+              {
+                std::cout << "\nYou can't do that silly! I hope you feel stupid right now :)\n";
+              }
+            }
+            else
+            {
+              if (user_input == 5)  //Square Root
+              {
+                std::cout << "\nEnter a number\n> ";
+                std::cin >> num1;
+                if (num1 > 0)
+                {
+                  std::cout << "\nThe square root is " << std::sqrt(num1) << "!\n";
+                }
+                else
+                {
+                  std::cout << "\nDon't you feel like a fool? LLLLLLLL\n";
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
+  std::cout << "\nThank you for using the C++ Calculator!\n";
   return 0;
 }
